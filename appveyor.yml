@@ -57,7 +57,7 @@ test_script:
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
   # we'll use a simple python script.
   - python continuous-integration\move-conda-package.py conda-recipe
-  - conda create -n my_tests --yes python=%PYTHON_VERSION%
+  - conda create -n my_tests --yes python=%PYTHON_VERSION% setuptools
   - activate my_tests
   - python setup.py test
 
