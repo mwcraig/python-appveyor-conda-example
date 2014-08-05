@@ -8,6 +8,7 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\continuous-integration\\appveyor\\run_with_env.cmd"
+    NUMPY_VERSION: "1.8"
 
   matrix:
     - PYTHON: "C:\\Python27_32"
@@ -57,9 +58,10 @@ test_script:
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
   # we'll use a simple python script.
   - python continuous-integration\move-conda-package.py conda-recipe
-  - conda create -n my_tests --yes python=%PYTHON_VERSION% setuptools
+  - conda create -n my_tests --yes python=%PYTHON_VERSION% setuptools cython numpy=%NUMPY_VERSION% nose
   - activate my_tests
-  - python setup.py test
+  - nosetests --exe pyappveyordemo
+  #- python setup.py test
 
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
