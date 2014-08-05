@@ -60,7 +60,7 @@ test_script:
   - python continuous-integration\move-conda-package.py conda-recipe
   - conda create -n my_tests --yes python=%PYTHON_VERSION% setuptools cython numpy=%NUMPY_VERSION% nose
   - activate my_tests
-  - conda install --use-local pyappveyordemo
+  - conda install --use-local --yes pyappveyordemo
   - nosetests --exe pyappveyordemo
   #- python setup.py test
 
