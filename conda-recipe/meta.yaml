@@ -15,12 +15,6 @@ requirements:
     - python
     - numpy
 
-test:
-    requires:
-        - nose
-    commands:
-        - nosetests --exe pyappveyordemo
-
 about:
   home: https://github.com/rmcgibbo/python-appveyor-conda-example
   license: MIT
