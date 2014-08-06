@@ -14,7 +14,7 @@ install:
   - source continuous-integration/travis/install.sh
 
 script:
-  - conda install setuptools numpy cython
+  - conda install --yes setuptools numpy cython
   - python setup.py bdist_conda
   #- conda build conda-recipe --quiet
 
